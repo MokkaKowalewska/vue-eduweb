@@ -28,6 +28,7 @@
         </p>
         <h2>Kto najlepszy jest? {{ lotekLoop }}</h2>
         <h3 v-html="embolden('jestem gruby!')"></h3>
+        <a v-bind:href="url">Portfolio website</a>
       </div>
     </div>
 
@@ -39,6 +40,7 @@
           heading: "siemanko",
           text: "świecie",
           favStand: "Lotek",
+          url: "http://monikakowalewska.pl",
         },
         computed: {
           lotekLoop: function () {
