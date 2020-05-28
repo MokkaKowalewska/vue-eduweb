@@ -23,6 +23,10 @@
       <div id="app" v-cloak>
         <h1>{{ upperCase(heading) }}</h1>
         <p>{{ text }}</p>
+        <p>
+          Mój ulubiony standupper to: {{ favStand }}
+        </p>
+        <h2>Kto najlepszy jest? {{ lotekThree }}</h2>
       </div>
     </div>
 
@@ -33,10 +37,23 @@
         data: {
           heading: "siemanko",
           text: "świecie",
+          favStand: "Lotek",
+        },
+        computed: {
+          lotekLoop: function () {
+            let message = "";
+            for (let i = 0; i < 7; i++) {
+              message += `${this.favStand} `;
+            }
+            return message;
+          },
         },
         methods: {
-          upperCase: (value) => {
+          upperCase: function (value) {
             return value.toUpperCase();
+          },
+          getFavStandUpper: function () {
+            this.favStand = prompt("Wpisz ksywę ulubionego standuppera:");
           },
         },
       });
