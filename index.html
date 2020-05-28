@@ -1,34 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Kurs Vue.js - Przykład 02</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.0/spectre.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.0/spectre.min.css"
+    />
     <style>
-        .container {
-            margin-top: 100px;
-            margin-bottom: 100px;
-        }
+      .container {
+        margin-top: 100px;
+        margin-bottom: 100px;
+      }
 
-        [v-cloak] {
-            display: none;
-        }
+      [v-cloak] {
+        display: none;
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <div class="container grid-lg">
-
-        <div id="app" v-cloak>
-            <h1>Hello World/h1>
-            <p>Witaj w świecie Vue.js!</p>
-        </div>
-
+      <div id="app" v-cloak>
+        <h1>{{ upperCase(heading) }}</h1>
+        <p>{{ text }}</p>
+      </div>
     </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
-<script>
-
-</script>
-</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          heading: "siemanko",
+          text: "świecie",
+        },
+        methods: {
+          upperCase: (value) => {
+            return value.toUpperCase();
+          },
+        },
+      });
+    </script>
+  </body>
 </html>
