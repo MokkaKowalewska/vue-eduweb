@@ -26,7 +26,8 @@
         <p>
           Mój ulubiony standupper to: {{ favStand }}
         </p>
-        <h2>Kto najlepszy jest? {{ lotekThree }}</h2>
+        <h2>Kto najlepszy jest? {{ lotekLoop }}</h2>
+        <h3 v-html="embolden('jestem gruby!')"></h3>
       </div>
     </div>
 
@@ -54,6 +55,9 @@
           },
           getFavStandUpper: function () {
             this.favStand = prompt("Wpisz ksywę ulubionego standuppera:");
+          },
+          embolden: function (value) {
+            return `<strong>${value}</strong>`;
           },
         },
       });
