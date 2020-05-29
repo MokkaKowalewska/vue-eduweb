@@ -31,6 +31,7 @@
         <a v-bind:href="url">Portfolio website</a>
         <hr />
         <img :src="imgSrc" alt="" />
+        <p>{{ showFood() }}</p>
       </div>
     </div>
 
@@ -44,6 +45,7 @@
           favStand: "Lotek",
           url: "http://monikakowalewska.pl",
           imgSrc: "https://picsum.photos/1000/500",
+          food: ["🌭", "🍿", "🥓"],
         },
         computed: {
           lotekLoop: function () {
@@ -63,6 +65,9 @@
           },
           embolden: function (value) {
             return `<strong>${value}</strong>`;
+          },
+          showFood: function () {
+            return this.food.join(" 💚 ");
           },
         },
       });
