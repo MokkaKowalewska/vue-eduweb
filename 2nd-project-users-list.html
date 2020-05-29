@@ -41,7 +41,6 @@
               v-for="(user, index) in users"
               :user="user"
               :index="index"
-              :key="users.id"
               is="edu-user"
             ></tr>
           </tbody>
@@ -55,21 +54,19 @@
       Vue.component("edu-user", {
         template: `
             <tr>
-                <td>{{ user.id }}</td>
+                <td>{{ index }}</td>
                 <td>{{ user.fullName }}</td>
                 <td>{{ user.age }}</td>
-                <td></td>
+                <td>
+                    <button class="btn btn-error">X</button>
+                    </td>
             </tr>
 
           `,
-        props: [
-          {
-            user: String,
-          },
-          {
-            index: Number,
-          },
-        ],
+        props: {
+          user: Object,
+          index: Number,
+        },
       });
 
       new Vue({
