@@ -69,6 +69,10 @@
           showFood: function () {
             return this.food.join(" 💚 ");
           },
+          addFood: function () {
+            let newFood = prompt("Wpisz emoji ulubionego jedzenia:");
+            this.food.push(newFood);
+          },
         },
       });
     </script>
