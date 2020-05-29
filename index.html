@@ -41,7 +41,8 @@
         <h3 v-html="embolden('jestem gruby!')"></h3>
         <a v-bind:href="url">Portfolio website</a>
         <hr />
-        <img :src="imgSrc" alt="" />
+        <p>Skroluj, żeby powiększyć/zmniejszyć zdjęcie</p>
+        <img @wheel.prevent="zoom" :src="imgSrc" alt="" />
         <p>{{ showFood() }}</p>
       </div>
     </div>
@@ -60,6 +61,7 @@
           counter: 0,
           sent: false,
           hidden: false,
+          level: 0,
         },
         computed: {
           lotekLoop: function () {
@@ -93,6 +95,15 @@
           },
           mySubmit: function () {
             this.sent = true;
+          },
+          zoom: function (e) {
+            if (e.deltaY > 0) {
+              this.level += 0.1;
+            } else {
+              if (this.level > 1) {
+                this.level -= 0.1;
+              }
+            }
           },
         },
       });
