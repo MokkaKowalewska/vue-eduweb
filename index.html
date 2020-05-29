@@ -13,7 +13,8 @@
         margin-bottom: 100px;
       }
 
-      [v-cloak] {
+      [v-cloak],
+      .d-none {
         display: none;
       }
     </style>
@@ -26,7 +27,10 @@
         <p>
           Mój ulubiony standupper to: {{ favStand }}
         </p>
-        <h2>Kto najlepszy jest? {{ lotekLoop }}</h2>
+        <h2 :class="{ 'd-none': hidden }">
+          Kto najlepszy jest? {{ lotekLoop }}
+        </h2>
+        <button @click="hidden = true">zniknij Lotkową pętlę</button>
         <h3>Na ile procent? {{ counter }}%</h3>
         <button @click="increment(100, $event)" :disabled="counter >= 500">
           Pokaż procenty
@@ -55,6 +59,7 @@
           food: ["🌭", "🍿", "🥓"],
           counter: 0,
           sent: false,
+          hidden: false,
         },
         computed: {
           lotekLoop: function () {
