@@ -37,7 +37,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="user in users" :key="users.id" is="edu-user"></tr>
+            <tr
+              v-for="(user, index) in users"
+              :user="user"
+              :index="index"
+              :key="users.id"
+              is="edu-user"
+            ></tr>
           </tbody>
         </table>
       </div>
@@ -56,7 +62,14 @@
             </tr>
 
           `,
-          props:
+        props: [
+          {
+            user: String,
+          },
+          {
+            index: Number,
+          },
+        ],
       });
 
       new Vue({
