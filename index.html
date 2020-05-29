@@ -29,6 +29,8 @@
         <h2>Kto najlepszy jest? {{ lotekLoop }}</h2>
         <h3 v-html="embolden('jestem gruby!')"></h3>
         <a v-bind:href="url">Portfolio website</a>
+        <hr />
+        <img :src="imgSrc" alt="" />
       </div>
     </div>
 
@@ -41,6 +43,7 @@
           text: "świecie",
           favStand: "Lotek",
           url: "http://monikakowalewska.pl",
+          imgSrc: "https://picsum.photos/1000/500",
         },
         computed: {
           lotekLoop: function () {
