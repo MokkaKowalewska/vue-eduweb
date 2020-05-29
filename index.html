@@ -28,9 +28,12 @@
         </p>
         <h2>Kto najlepszy jest? {{ lotekLoop }}</h2>
         <h3>Na ile procent? {{ counter }}%</h3>
-        <button @click="increment" :disabled="counter >= 500">
+        <button @click="increment(100, $event)" :disabled="counter >= 500">
           Pokaż procenty
         </button>
+        <hr />
+        <input type="text" @keydown.shift.enter.prevent="mySubmit" />
+        <button @click="mySubmit" :disabled="sent">Wyślij</button>
         <h3 v-html="embolden('jestem gruby!')"></h3>
         <a v-bind:href="url">Portfolio website</a>
         <hr />
@@ -51,6 +54,7 @@
           imgSrc: "https://picsum.photos/1000/500",
           food: ["🌭", "🍿", "🥓"],
           counter: 0,
+          sent: false,
         },
         computed: {
           lotekLoop: function () {
@@ -78,8 +82,12 @@
             let newFood = prompt("Wpisz emoji ulubionego jedzenia:");
             this.food.push(newFood);
           },
-          increment: function () {
-            this.counter += 100;
+          increment: function (by, e) {
+            console.log(e);
+            this.counter += by;
+          },
+          mySubmit: function () {
+            this.sent = true;
           },
         },
       });
