@@ -29,7 +29,9 @@
 
         <div class="text-center">
           <h1>{{ counter }}</h1>
-          <button class="btn btn-primary">Start</button>
+          <button class="btn btn-primary" @click="start" :disabled="inProgress">
+            Start
+          </button>
         </div>
       </div>
     </div>
@@ -40,8 +42,13 @@
         el: "#app",
         data: {
           counter: 10,
+          inProgress: false,
         },
-        methods: {},
+        methods: {
+          start() {
+            this.inProgress = true;
+          },
+        },
       });
     </script>
   </body>
