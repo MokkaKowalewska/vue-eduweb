@@ -21,7 +21,7 @@
   <body>
     <div class="container grid-lg">
       <div id="app" v-cloak>
-        <div class="toast toast-primary text-center">
+        <div class="toast toast-primary text-center" v-show="!inProgress">
           Wciśnij <strong>Start</strong>, aby rozpocząć odliczanie.
         </div>
 
@@ -47,6 +47,17 @@
         methods: {
           start() {
             this.inProgress = true;
+            this.countdown();
+          },
+          countdown() {
+            this.counter--;
+
+            if (this.counter > 0) {
+              setTimeout(this.countdown, 1000);
+            } else {
+              this.counter = 10;
+              this.inProgress = false;
+            }
           },
         },
       });
