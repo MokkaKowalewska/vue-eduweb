@@ -8,10 +8,12 @@ import getters from "./getters";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    state: {
-        product: null
-    },
-    getters,
-    mutations,
-    actions,
+  state: {
+    product: null,
+    selected: {},
+    finished: false,
+  },
+  getters,
+  mutations,
+  actions,
 });
