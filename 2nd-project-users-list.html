@@ -41,6 +41,7 @@
               v-for="(user, index) in users"
               :user="user"
               :index="index"
+              @remove="remove"
               is="edu-user"
             ></tr>
           </tbody>
@@ -54,18 +55,28 @@
       Vue.component("edu-user", {
         template: `
             <tr>
-                <td>{{ index }}</td>
+                <td>{{ index + 1 }}.</td>
                 <td>{{ user.fullName }}</td>
                 <td>{{ user.age }}</td>
                 <td>
-                    <button class="btn btn-error">X</button>
-                    </td>
+                    <button class="btn btn-error" @click="remove(user.id)">X</button>
+                </td>
             </tr>
 
           `,
+        data: function() {
+            return {
+                editMode: false,
+            }
+        }
         props: {
           user: Object,
           index: Number,
+        },
+        methods: {
+          remove(id) {
+            this.$emit("remove", id);
+          },
         },
       });
 
@@ -79,6 +90,12 @@
             { id: 4, fullName: "Katarzyna Tomczyk", age: 34 },
             { id: 5, fullName: "Mariusz Klasa", age: 21 },
           ],
+        },
+        methods: {
+          remove(id) {
+            let index = _.findIndex(this.users, ["id", id]);
+            this.users.splice(index, 1);
+          },
         },
       });
     </script>
