@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Product />
+    <Product :product="product" />
   </div>
 </template>
 
@@ -9,7 +9,11 @@ import Product from "./components/Product";
 
 export default {
   name: "App",
-  computed: {},
+  computed: {
+      product() => (
+          this.$store.state.product;
+      )
+  },
   components: {
     Product,
   },
